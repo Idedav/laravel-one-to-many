@@ -16,11 +16,12 @@ class Project extends Model
     }
 
     protected $fillable = [
+        'type_id',
         'name',
         'slug',
         'description',
         'image',
-        'image_original_name',
+        'image_original_name'
     ];
     public static function generateSlug($string)
     {

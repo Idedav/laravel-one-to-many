@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Functions\Helper;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Type;
 
 class ProjectController extends Controller
 {
@@ -32,7 +33,8 @@ class ProjectController extends Controller
         $method = 'POST';
         $route = route('admin.projects.store');
         $project = null;
-        return view('admin.projects.create-edit', compact('title', 'method', 'route', 'project'));
+        $types = Type::all();
+        return view('admin.projects.create-edit', compact('title', 'method', 'route', 'project', 'types'));
     }
 
     /**
@@ -50,6 +52,7 @@ class ProjectController extends Controller
         $new_project->name = $form_data['name'];
         $new_project->slug = Helper::generateSlug($form_data['name'], Project::class);
         $new_project->description = $form_data['description'];
+        $new_project->type_id = $form_data['type'];
 
         if (array_key_exists('image', $form_data)) {
 
@@ -88,7 +91,8 @@ class ProjectController extends Controller
         $title = 'Edit Project';
         $method = 'PUT';
         $route = route('admin.projects.update', $project);
-        return view('admin.projects.create-edit', compact('title', 'method', 'route', 'project'));
+        $types = Type::all();
+        return view('admin.projects.create-edit', compact('title', 'method', 'route', 'project', 'types'));
     }
 
     /**

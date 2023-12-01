@@ -12,6 +12,17 @@
             <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $project?->name) }}">
         </div>
         <div class="mb-3">
+            <label for="type" class="form-label">Project Type:</label>
+            <select class="form-select" id="type" name="type">
+                <option selected>Select a type</option>
+                @foreach ($types as $type)
+                    <option value="{{ $type->id }}"
+                        {{ old('type_id', $project->type_id) == $type->id ? 'selected' : '' }}>{{ $type->name }}</option>
+                @endforeach
+
+            </select>
+        </div>
+        <div class="mb-3">
             <label for="image" class="form-label">Image:</label>
             <input type="file" class="form-control" id="image" name="image"
                 value="{{ old('image', $project?->image) }}">

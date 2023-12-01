@@ -21,7 +21,7 @@ class ProjectTableSeeder extends Seeder
 
             $new_project = new Project();
             $new_project->type_id = Type::all()->random()->id;
-            $new_project->name = $faker->sentence();
+            $new_project->name = $faker->word();
             $new_project->slug = Project::generateSlug($new_project->name);
             $new_project->description = $faker->paragraph();
             $new_project->save();
