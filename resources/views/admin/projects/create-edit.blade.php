@@ -17,7 +17,7 @@
                 <option selected>Select a type</option>
                 @foreach ($types as $type)
                     <option value="{{ $type->id }}"
-                        {{ old('type_id', $project->type_id) == $type->id ? 'selected' : '' }}>{{ $type->name }}</option>
+                        {{ old('type_id', $project?->type_id) == $type->id ? 'selected' : '' }}>{{ $type->name }}</option>
                 @endforeach
 
             </select>
