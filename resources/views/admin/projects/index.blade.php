@@ -16,6 +16,7 @@
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Description</th>
+                <th scope="col">Type</th>
             </tr>
         </thead>
         <tbody>
@@ -24,6 +25,7 @@
                     <td>{{ $project->id }}</td>
                     <td>{{ $project->name }}</td>
                     <td>{{ $project->description }}</td>
+                    <td>{{ $project->type?->name ?? '-' }}</td>
                     <td class="d-flex">
                         <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-warning me-2">
                             <i class="fa-solid fa-pencil"></i>

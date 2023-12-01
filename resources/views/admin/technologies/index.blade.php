@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1 class="my-3">Tecnologies:</h1>
+    <h1 class="my-3">Technologies:</h1>
 
     @if (session('error'))
         <div class="alert alert-danger" role="alert">
@@ -15,10 +15,10 @@
         </div>
     @endif
 
-    <form action="{{ route('admin.tecnologies.store') }}" method="POST">
+    <form action="{{ route('admin.technologies.store') }}" method="POST">
         @csrf
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="New Tecnology..." id="name" name="name">
+            <input type="text" class="form-control" placeholder="New Technology..." id="name" name="name">
             <button class="btn btn-primary" type="sumbit" id="button-addon2">Add</button>
         </div>
     </form>
@@ -27,27 +27,27 @@
         <thead>
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Tecnology</th>
+                <th scope="col">Technology</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($tecnologies as $tecnology)
+            @foreach ($technologies as $technology)
                 <tr>
-                    <td>{{ $tecnology->id }}</td>
+                    <td>{{ $technology->id }}</td>
                     <td>
-                        <form action="{{ route('admin.tecnologies.update', $tecnology) }}" method="POST"
-                            id="form-edit-{{ $tecnology->id }}">
+                        <form action="{{ route('admin.technologies.update', $technology) }}" method="POST"
+                            id="form-edit-{{ $technology->id }}">
                             @csrf
                             @method('PUT')
-                            <input class="custom-input" type="text" value="{{ $tecnology->name }}" name="name">
+                            <input class="custom-input" type="text" value="{{ $technology->name }}" name="name">
                         </form>
                     </td>
                     <td class="d-flex justify-content-end">
-                        <button onclick="submitForm({{ $tecnology->id }})" class="btn btn-warning me-2"><i
+                        <button onclick="submitForm({{ $technology->id }})" class="btn btn-warning me-2"><i
                                 class="fa-solid fa-pencil"></i></button>
                         @include('admin.partials.form-delete', [
-                            'route' => route('admin.tecnologies.destroy', $tecnology),
-                            'name' => $tecnology->name,
+                            'route' => route('admin.technologies.destroy', $technology),
+                            'name' => $technology->name,
                         ])
                     </td>
                 </tr>

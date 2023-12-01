@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Tecnology;
+use App\Models\Technology;
 use Illuminate\Support\Str;
 use App\Functions\Helper;
 
-class TecnologyController extends Controller
+class TechnologyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class TecnologyController extends Controller
      */
     public function index()
     {
-        $tecnologies = Tecnology::all();
-        return view('admin.tecnologies.index', compact('tecnologies'));
+        $technologies = Technology::all();
+        return view('admin.technologies.index', compact('technologies'));
     }
 
     /**
@@ -39,15 +39,15 @@ class TecnologyController extends Controller
      */
     public function store(Request $request)
     {
-        $exixts = Tecnology::where('name', $request->name)->first();
+        $exixts = Technology::where('name', $request->name)->first();
         if ($exixts) {
-            return redirect()->route('admin.tecnologies.index')->with('error', 'Tecnology already exists');
+            return redirect()->route('admin.technologies.index')->with('error', 'Technology already exists');
         } else {
-            $new_tecnology = new Tecnology();
-            $new_tecnology->name = $request->name;
-            $new_tecnology->slug = Str::slug($request->name, '-');
-            $new_tecnology->save();
-            return redirect()->route('admin.tecnologies.index')->with('success', 'Tecnology added successfully');
+            $new_technology = new Technology();
+            $new_technology->name = $request->name;
+            $new_technology->slug = Str::slug($request->name, '-');
+            $new_technology->save();
+            return redirect()->route('admin.technologies.index')->with('success', 'Technology added successfully');
         }
     }
 
@@ -80,27 +80,27 @@ class TecnologyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tecnology $tecnology)
+    public function update(Request $request, Technology $technology)
     {
 
         $form_data = $request->all();
 
         //
 
-        $exixts = Tecnology::where('name', $request->name)->first();
+        $exixts = Technology::where('name', $request->name)->first();
         if ($exixts) {
-            return redirect()->route('admin.tecnologies.index')->with('error', 'Tecnology already exists');
+            return redirect()->route('admin.technologies.index')->with('error', 'Technology already exists');
         }
 
-        $form_data['slug'] = Helper::generateSlug($request->name, Tecnology::class);
+        $form_data['slug'] = Helper::generateSlug($request->name, Technology::class);
 
 
 
-        $tecnology->update($form_data);
+        $technology->update($form_data);
 
 
 
-        return redirect()->route('admin.tecnologies.index')->with('success', 'Tecnology Updated successfully');
+        return redirect()->route('admin.technologies.index')->with('success', 'Technology Updated successfully');
     }
 
     /**
@@ -109,9 +109,9 @@ class TecnologyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tecnology $tecnology)
+    public function destroy(Technology $technology)
     {
-        $tecnology->delete();
-        return redirect()->route('admin.tecnologies.index')->with('success', 'Tecnology deleted successfully');
+        $technology->delete();
+        return redirect()->route('admin.technologies.index')->with('success', 'Technology deleted successfully');
     }
 }
