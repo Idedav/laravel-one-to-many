@@ -36,6 +36,7 @@ Route::middleware(['auth', 'verified'])
         Route::resource('projects', ProjectController::class);
         Route::resource('technologies', TechnologyController::class);
         Route::resource('types', TypeController::class);
+        Route::get('projects-types', [TypeController::class, 'projectsTypes'])->name('projects-types');
     });
 
 require __DIR__ . '/auth.php';

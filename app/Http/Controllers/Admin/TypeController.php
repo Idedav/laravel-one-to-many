@@ -14,6 +14,12 @@ class TypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function projectsTypes()
+    {
+        $types = Type::all();
+        return view('admin.types.projects-types', compact('types'));
+    }
     public function index()
     {
         $types = Type::all();

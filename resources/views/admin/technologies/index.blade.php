@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1 class="my-3">Technologies:</h1>
+    <h1 class="my-3">Technologies</h1>
 
     @if (session('error'))
         <div class="alert alert-danger" role="alert">
