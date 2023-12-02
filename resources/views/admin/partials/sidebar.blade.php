@@ -21,6 +21,11 @@
                     <i class="fa-solid fa-code"></i> Technologies
                 </a>
             </li>
+            <li><a href="{{ route('admin.types.index') }}"
+                    class="{{ Route::currentRouteName() === 'admin.types.index' ? 'active' : '' }}">
+                    <i class="fa-solid fa-laptop-code"></i> Types
+                </a>
+            </li>
         </ul>
     </nav>
 </aside>

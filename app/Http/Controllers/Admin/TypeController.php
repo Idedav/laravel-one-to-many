@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Type;
+use App\Functions\Helper;
 
 class TypeController extends Controller
 {
@@ -14,7 +16,8 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+        $types = Type::all();
+        return view('admin.types.index', compact('types'));
     }
 
     /**
@@ -35,7 +38,19 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $exixts = Type::where('name', $request->name)->first();
+
+        if ($exixts) {
+            return redirect()->route('admin.types.index')->with('error', 'Type already exists');
+        }
+
+        $new_type = new Type();
+        $new_type->name = $request->name;
+        $new_type->slug = Helper::generateSlug($request->name, Type::class);
+        $new_type->save();
+
+        return redirect()->route('admin.types.index')->with('success', 'Type added successfully');
     }
 
     /**
@@ -67,9 +82,16 @@ class TypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Type $type)
     {
-        //
+        $form_data = $request->all();
+        $exixts = Type::where('name', $form_data['name'])->first();
+
+        if ($exixts) {
+            return redirect()->route('admin.types.index')->with('error', 'Type already exists');
+        }
+        $type->update($form_data);
+        return redirect()->route('admin.types.index')->with('success', 'Type Updated successfully');
     }
 
     /**
@@ -78,8 +100,10 @@ class TypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Type $type)
     {
-        //
+        $type->delete();
+
+        return redirect()->route('admin.types.index')->with('success', 'Type deleted successfully');
     }
 }

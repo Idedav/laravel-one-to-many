@@ -18,7 +18,7 @@ header {
 }
 
 aside {
-    width: 250px;
+    width: 200px;
     height: 100%;
     ul{
         list-style: none;
@@ -36,7 +36,7 @@ aside {
 }
 
 main{
-    width: calc(100% - 250px);
+    width: calc(100% - 200px);
     padding: 50px 100px;
     overflow: auto;
     .custom-input{
