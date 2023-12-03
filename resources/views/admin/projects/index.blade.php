@@ -2,21 +2,24 @@
 
 @section('content')
     <h1>Projects</h1>
-    {{ $projects->links() }}
+
+    <div class="pagination-container">
+        {{ $projects->links() }}
+    </div>
 
     @if (session('success'))
         <div class="alert alert-success" role="alert">
             {{ session('success') }}
         </div>
     @endif
-
-    <table class="table table-striped table-hover">
+    <table>
         <thead>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Description</th>
-                <th scope="col">Type</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>

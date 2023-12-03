@@ -1,4 +1,4 @@
-<header class="bg-dark">
+<header>
 
     <nav class="navbar navbar-dark">
         <div class="container-fluid">

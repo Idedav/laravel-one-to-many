@@ -27,11 +27,12 @@
         @enderror
     </form>
 
-    <table class="table table-striped table-hover">
+    <table>
         <thead>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Technology</th>
+                <th>ID</th>
+                <th>Technology</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>

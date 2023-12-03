@@ -4,13 +4,14 @@
     <h1 class="mb-5">Projects by Types</h1>
 
     @foreach ($types as $type)
-        <h4>{{ $type->name }}:</h4>
-        <table class="table table-striped table-hover mb-5">
+        <h2>{{ $type->name }}:</h2>
+        <table class="mb-5">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Description</th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
