@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Technology;
 use Illuminate\Support\Str;
 use App\Functions\Helper;
+use App\Http\Requests\TechnologyRequest;
 
 class TechnologyController extends Controller
 {
@@ -37,7 +38,7 @@ class TechnologyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TechnologyRequest $request)
     {
         $exixts = Technology::where('name', $request->name)->first();
         if ($exixts) {
@@ -80,7 +81,7 @@ class TechnologyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Technology $technology)
+    public function update(TechnologyRequest $request, Technology $technology)
     {
 
         $form_data = $request->all();

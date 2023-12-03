@@ -9,7 +9,11 @@
         @method($method)
         <div class="mb-3">
             <label for="name" class="form-label">Project Name:</label>
-            <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $project?->name) }}">
+            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name"
+                value="{{ old('name', $project?->name) }}">
+            @error('name')
+                <p class="text-danger">{{ $message }}</p>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="type" class="form-label">Project Type:</label>
@@ -32,8 +36,11 @@
         </div>
         <div class="mb-3">
             <label for="description">Description:</label>
-            <textarea class="form-control" placeholder="Leave a description here" id="description" name="description"
-                style="height: 100px">{{ old('description', $project?->description) }}</textarea>
+            <textarea class="form-control @error('description') is-invalid @enderror" placeholder="Leave a description here"
+                id="description" name="description" style="height: 100px">{{ old('description', $project?->description) }}</textarea>
+            @error('description')
+                <p class="text-danger">{{ $message }}</p>
+            @enderror
         </div>
         <button type="submit" class="btn btn-primary">Confirm</button>
         <button type="reset" class="btn btn-secondary">Cancel</button>

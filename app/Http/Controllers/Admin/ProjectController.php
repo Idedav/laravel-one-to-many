@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Functions\Helper;
+use App\Http\Requests\ProjectRequest as RequestsProjectRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Type;
+use App\Http\Requests\ProjectRequest;
 
 class ProjectController extends Controller
 {
@@ -43,7 +45,7 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProjectRequest $request)
     {
         $form_data = $request->all();
 
@@ -102,7 +104,7 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $project)
+    public function update(ProjectRequest $request, Project $project)
     {
         $form_data = $request->all();
 

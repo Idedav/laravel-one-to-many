@@ -18,9 +18,13 @@
     <form action="{{ route('admin.technologies.store') }}" method="POST">
         @csrf
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="New Technology..." id="name" name="name">
+            <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="New Technology..."
+                id="name" name="name">
             <button class="btn btn-primary" type="sumbit" id="button-addon2">Add</button>
         </div>
+        @error('name')
+            <p class="text-danger">{{ $message }}</p>
+        @enderror
     </form>
 
     <table class="table table-striped table-hover">

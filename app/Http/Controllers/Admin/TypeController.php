@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Type;
 use App\Functions\Helper;
+use App\Http\Requests\TypeRequest;
 
 class TypeController extends Controller
 {
@@ -42,7 +43,7 @@ class TypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TypeRequest $request)
     {
 
         $exixts = Type::where('name', $request->name)->first();
@@ -88,7 +89,7 @@ class TypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Type $type)
+    public function update(TypeRequest $request, Type $type)
     {
         $form_data = $request->all();
         $exixts = Type::where('name', $form_data['name'])->first();
